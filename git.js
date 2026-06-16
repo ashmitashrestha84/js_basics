@@ -25,7 +25,7 @@
 
 //! git working flow
 //* changes seen in:
-//? working directory  -> staging area  -> local repo
+//? working directory  -> staging area    -> local repo        ->remote repo 
 //? changes               ready state     new version/commiy
 // if change in working directory ,we cannot directly commit it, need to take it to the ready state i.e staging area and then to local repo for commit
 
@@ -37,5 +37,19 @@
 //* git status -> gives the current state of the file whether it is added or not
 
 //* git add <file_path>
+//? if all files should be added to staging state of a folder we use -> git add . 
+
 
 //* git commit -m "<commit_messages>"-> takes the staging area file to local repo
+//every change is new version
+
+
+//* git push origin <branch_name>
+
+
+//?local to remote
+//* git remote -v -> list remote repo 
+//* git remote add origin <remote_repo_url> 
+//? origin is variable and can be any
+//* git remote remove origin
+
