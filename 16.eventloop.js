@@ -9,15 +9,14 @@
 //* macrotaskqueue/callback queue->timer,DOM
 //* microtaskqueue has the highest priority than macrotaskqueue
 
-//* event loop-> continuosly looping mechanism that pop the task from task queue and 
-//* push to stack if stack is free,
+//* event loop->continuosly looping mechanism that pop the task from task queue and push to stack if stack is free,
 
 
 // console.log('a');
 // setTimeout(()=>{
 //     console.log('processing');
 // },2000)
-// //setTimeout gurantees task run after 2 sec but not before 2sec
+//setTimeout gurantees task run after 2 sec but not before 2sec
 // const getUser = () => {
 //     return new Promise((resolve, reject) => {
 //         setTimeout(() => {

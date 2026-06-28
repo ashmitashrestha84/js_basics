@@ -15,7 +15,7 @@ let name='John';
 let key='email'
 let obj={
     name,
-    [key]:"email",//email
+    [key]:"hhh",//email
     getName: function(){ //old
         return this.name;
     },
@@ -40,13 +40,12 @@ console.log(obj[key])
 //! rest operator  ...
 
 //! default parameter
-
-//! rest parameter ...
 // function add(a=0,b=0){
 //     return a+b;
 // }
 // add();
 
+//! rest parameter ...
 function add(...numbers){ //no fix argument
     console.log(numbers); //returns in array
     let sum=0;

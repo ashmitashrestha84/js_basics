@@ -399,3 +399,176 @@ for(let i=0;i<matches.length-1;i++){
         console.log(`Player ${i+1} wins.`)
     }
 }
+
+
+//! Find and extract the highest-paid employee object from an array of employee records.
+//! If two employees share the exact same highest salary, return the first one discovered in
+//! the array index sequence.
+//! Initialize a tracking variable with the first element of the array. Loop through elements,
+//! changing tracking pointer if element.salary > currentMax.
+
+
+const employee = [
+    {
+        name: 'A',
+        salary: 5000,
+    },
+    {
+        name: 'B',
+        salary: 8000,
+    }
+];
+let currentMax= employee[0];
+for (const element of employee) {
+    if (element.salary > currentMax.salary) {
+        currentMax= element;
+    }
+};
+
+console.log(currentMax);
+
+//! Calculate the collective average salary of an array of employee objects.
+//! Return 0 if the input array is empty. Round the final calculated value to exactly two decimal places
+//! Iterate through the array to add up all salary sub-properties, then divide by array.length.
+//! Use .toFixed(2) for output normalization.
+
+
+
+const emp=[{salary:3000},{salary:6000}];
+let averg
+if (emp.length === 0) {
+    console.log(0);
+} else{
+    averg=emp.reduce((prev,curr)=>{
+        return prev+=curr.salary;
+    },0)
+}
+averg/=emp.length;
+console.log(averg.toFixed(2));
+
+
+
+//! Filter a user database array and return a new array containing only the users who are 18 years or older.
+//! Do not mutate the incoming array reference. If no elements match criteria parameters,
+//! return an empty array.
+//! Initialize a clean output array. Loop through elements and conditionally push copies of
+//! matching objects into it.
+
+const user1=[{name:'A', age:16},{name:'B', age:22}] 
+let user2;
+user2=user1.filter((val,ind)=>val.age>=18);
+console.log(user2);
+
+
+//!Convert a flat array of user objects into a lookup dictionary keyed by a unique property
+//!marker like 'id'.
+//!MERN optimization strategy: Turn an O(N) array scan into an O(1) constant-time key
+//!lookup object.
+//!Create an empty object. Iterate over the array and assign each item to the object using
+//!item.id as the dynamic property key.
+
+const user_arr=[{id:'u1', name:'Alice'},{id:'u2',name:'Aana'}];
+let user_obj={};
+for (user of user_arr){
+    user_obj[user.id]=user;
+}
+console.log(user_obj);
+
+//! Group an array of student records into a single object classified by their assigned grade string
+//! The grouped object keys must match unique grade letters, and values must be arrays
+//! containing matching student records.
+//! Check if your accumulator object already has an entry array for the given grade key; if
+//! not, declare it as an empty list before pushing.
+
+const student_arr= [{name:'X', grade:'A'}, {name:'Y', grade:'B'}] ;
+const student_obj={};
+for (student of student_arr){
+    if (!student_obj[student.grade]) {
+        student_obj[student.grade] = [];
+    }
+    student_obj[student.grade].push(student);
+}
+console.log(student_obj);
+
+//!Count the cumulative total quantity of items currently in stock inside an e-commerce
+//!catalog, categorized by department label.
+//!Output a single analytical analytics summary object tracking totals per category key.
+//!Use an object-accumulator tracking pattern, parsing each element item, updating
+//!category numeric counts progressively.
+
+const stock_arr=[{cat:'Tech', stock:5}, {cat:'Tech', stock:2}];
+const stock_obj = {};
+for (const item of stock_arr) {
+    if (!stock_obj[item.cat]) {
+        stock_obj[item.cat] = 0;
+    }
+    stock_obj[item.cat]+=item.stock;
+}
+console.log(stock_obj);
+
+//!Consolidate a raw array data stream containing duplicate entries with matching ID
+//!markers, aggregating their values.
+//!Merge matching IDs together and aggregate their respective values into a clean
+//!normalized collection index.
+//!Utilize an auxiliary map or object dictionary to handle quick aggregations before mapping
+//!entries back into a flat array structure.
+
+const raw_array = [{ id: 101, qty: 2 },{ id: 101, qty: 3 }];
+const obj = raw_array.reduce((prev, curr) => {
+    if (!prev[curr.id]) {
+        prev[curr.id] = {...curr };
+    } else {
+        prev[curr.id].qty += curr.qty;
+    }
+    return prev;
+}, {});
+const result = Object.values(obj);
+console.log(result);
+
+
+//!Run a profile compliance health check comparing a profile object against mandatory required fields.
+//!Output a clean array list of missing field strings. Empty strings ('') are considered present;
+//!completely missing keys are flagged.
+//!Loop through the required fields collection array, checking presence via the 'hasOwn'
+//!lookup or evaluating if key === undefined.
+
+const profile={name:'J'};
+const required=['name', 'email'];
+const missing=[]
+for(every of required){
+    if(Object.hasOwn(profile,every)===false){
+        missing.push(every);
+    }
+}
+console.log(missing);
+
+//!Sort an array of user profile entries by their numerical age properties in ascending
+//!sequence order safely.
+//!Ensure the function is completely non-destructive. Copy the base reference to prevent
+//!mutation of the original inputs.
+//!Clone the incoming array using syntax structures like array spreads [...arr] or slice()
+//!before invoking a custom bubble sort logic.
+
+const age_arr=[{age:30}, {age:20}]
+// const before=[...age_arr];
+const before=age_arr.slice(0,2);
+before.sort((a,b)=>a.age-b.age);
+console.log("The array before sort is", age_arr);
+console.log("The array after sort is", before);
+
+//! Build a real-time leaderboard array sorting players by high score descending; if scores
+//! tie, sort alphabetically.
+//! Sort primarily by numerical score values high-to-low. If scores balance evenly, secondary
+//! sort alphabetically by username.
+//! Inside comparison conditions, specify tie handling blocks: if (p1.score === p2.score)
+//! compare usernames via localeCompare() or inequalities.
+
+const com_arr= [{user:'B', score:80}, {user:'A', score:80}];
+com_arr.sort((a, b) => {
+    if (a.score === b.score) {
+        return a.user.localeCompare(b.user);
+    }
+    return b.score - a.score;
+});
+
+console.log(com_arr);
